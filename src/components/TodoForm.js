@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import "./TodoForm.css"
 
 
 class TodoForm extends Component{
@@ -26,13 +27,13 @@ render(){
 
     return(
         <div>
-        <form >
-           <input type="text" 
+        <form className="addForm">
+           <input className="addInput" type="text" 
                   name="todo"
                   value={this.state.todo}
                   onChange={this.inputHandler}/>
-            <button onClick={this.handleSubmit}>Add Todo</button>
-            <button onClick={(e)=>{
+            <button className="addButton" onClick={this.handleSubmit}>Add Todo</button>
+            <button className="deleteButton" onClick={(e)=>{
                 e.preventDefault()
                 this.props.removeCompleted()}}>Clear Completed</button>
             </form>

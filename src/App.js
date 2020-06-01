@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList'
+import "./App.css"
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -70,13 +71,15 @@ class App extends React.Component {
     return (
       <div className="app">
         <h2>To-Do List</h2>
-           <input type="text" 
+        <div className="search">
+           <input className="searchInput" type="text" 
                   name="search" 
                   placeholder="search" 
                   value={this.state.searchTerm}
-                  onChange={this.searchHandler}/>
-         <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo} />
+                  onChange={this.searchHandler}></input>
+         </div>
          <TodoForm addTodo={this.addTodo} removeCompleted={this.removeCompleted}/>
+         <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo} />
       </div>
     );
   }
