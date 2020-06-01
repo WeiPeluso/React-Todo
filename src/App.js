@@ -10,6 +10,7 @@ class App extends React.Component {
     super();
     this.state={
       todos:[],
+      searchTerm:''
     }
   }
 
@@ -51,10 +52,29 @@ class App extends React.Component {
       })
 
     }
+
+    searchHandler=(e)=>{
+       this.setState({
+         searchTerm:e.target.value
+       })
+
+       this.setState({
+        todos:this.state.todos.filter(todo=>{
+          return todo.name.toLowerCase().includes(this.state.searchTerm.toLowerCase());
+        })
+
+      })
+
+    }
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
+      <div className="app">
+        <h2>To-Do List</h2>
+           <input type="text" 
+                  name="search" 
+                  placeholder="search" 
+                  value={this.state.searchTerm}
+                  onChange={this.searchHandler}/>
          <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo} />
          <TodoForm addTodo={this.addTodo} removeCompleted={this.removeCompleted}/>
       </div>
